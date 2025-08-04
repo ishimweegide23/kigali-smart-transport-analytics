@@ -116,6 +116,9 @@ print(df.head())
 ```
 
 
+<img width="609" height="634" alt="laod data dataset" src="https://github.com/user-attachments/assets/199883cc-e26b-4bc8-b5e1-2d47f5fea007" />
+
+
 
 ---
 
@@ -136,6 +139,9 @@ print(f"Duplicate records: {duplicates}")
 🔄 Duplicate records: 0
 📊 Data quality assessment completed successfully
 ```
+
+
+<img width="927" height="691" alt="Data Quality Assessment" src="https://github.com/user-attachments/assets/519f99d1-1c5d-465e-b17a-25860a05c475" />
 
 ---
 
@@ -159,7 +165,8 @@ axes[0, 1].set_title('🗺️ Operators by Region')
 ```
 
 **Result:**
-![EDA Dashboard showing operator type distribution, regional coverage, transport modes, and peak operations](https://via.placeholder.com/800x600/4CAF50/white?text=EDA+Dashboard+Results)
+
+<img width="607" height="616" alt="EXPLORATORY DATA ANALYSIS (EDA)" src="https://github.com/user-attachments/assets/7fa7a46c-8ee0-47a2-8271-df73f0898532" />
 
 **Key Findings:**
 - **Gasabo** dominates with 60% of operators
@@ -196,7 +203,9 @@ print(f"Silhouette Score: {silhouette_avg:.3f}")
 🎯 Four distinct operational clusters identified
 ```
 
-![Clustering Analysis showing elbow method and silhouette scores](https://via.placeholder.com/800x400/2196F3/white?text=Clustering+Analysis+Results)
+
+
+<img width="605" height="432" alt="Machine Learning - K-Means Clustering" src="https://github.com/user-attachments/assets/74c2f8a6-4f44-4989-984c-19ba79fef568" />
 
 ---
 
@@ -224,7 +233,10 @@ Bus              0.80      0.90      0.85
 Hire Car         0.85      0.80      0.82
 ```
 
-![Feature Importance chart showing regional and operational factors](https://via.placeholder.com/600x400/FF9800/white?text=Feature+Importance+Analysis)
+
+
+
+<img width="608" height="587" alt="Feature Importance chart showing" src="https://github.com/user-attachments/assets/830134bd-0e7d-499d-8ea3-ad10690ebf02" />
 
 ---
 
@@ -246,7 +258,7 @@ for idx, row in map_data.iterrows():
 ```
 
 **Result:**
-![Interactive map showing operator distribution across Kigali](https://via.placeholder.com/800x600/4CAF50/white?text=Interactive+Kigali+Transport+Map)
+![Interactive map showing operator distribution across Kigali](<img width="1366" height="648" alt="Interactive map" src="https://github.com/user-attachments/assets/4eb866cb-4d2c-4ed5-8c96-baf14852a232" />)
 
 ✅ Interactive map saved as 'kigali_transport_operators_map.html'
 
@@ -261,7 +273,8 @@ Two comprehensive Power BI pages designed for different stakeholder needs:
 
 ### **📄 Page 1 – Transport Overview Dashboard**
 
-![Page 1 Dashboard Overview](https://via.placeholder.com/1000x700/1976D2/white?text=Page+1+Transport+Overview+Dashboard)
+<img width="873" height="493" alt="🚌 Power BI Implementation Checklist - Kigali Transport Dashboard" src="https://github.com/user-attachments/assets/c4595fd1-5b33-471e-be83-ef496308081f" />
+
 
 #### **1️⃣ Card: Unique Locations Covered (21)**
 - **Purpose:** Quick KPI showing geographical coverage
@@ -291,7 +304,8 @@ Two comprehensive Power BI pages designed for different stakeholder needs:
 
 ### **📄 Page 2 – Detailed Analytics Dashboard**
 
-![Page 2 Analytics Dashboard](https://via.placeholder.com/1000x700/E91E63/white?text=Page+2+Detailed+Analytics+Dashboard)
+<img width="878" height="498" alt="🚌 Power BI Implementation Checklist -Kigali Transport Insights   Trends" src="https://github.com/user-attachments/assets/a2faf54b-bd1b-4da2-94da-38173eacab0d" />
+
 
 #### **1️⃣ Card: Total Registered Operators (368)**
 - **Purpose:** Complete operator count across system
