@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kigali Transport Dashboard Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f8ff;
+            padding: 20px;
+        }
+        
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .page-tabs {
+            display: flex;
+            background: #003366;
+            color: white;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border-right: 1px solid #0066cc;
+            font-weight: bold;
+        }
+        
+        .tab.active {
+            background: #0066cc;
+        }
+        
+        .tab:hover {
+            background: #004d99;
+        }
+        
+        .page-content {
+            padding: 20px;
+            min-height: 800px;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #003366, #0066cc);
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .dashboard-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .kpi-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        .kpi-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .kpi-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #003366;
+        }
+        
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .chart-container {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .chart-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 5px;
+        }
+        
+        .map-container {
+            grid-column: span 2;
+            height: 400px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .slicer-panel {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 250px;
+            z-index: 1000;
+        }
+        
+        .slicer-title {
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .slicer-item {
+            padding: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            background: #f9f9f9;
+        }
+        
+        .gauge-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .gauge {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(#228B22 0deg 216deg, #ddd 216deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .gauge-inner {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #003366;
+        }
+        
+        .scatter-chart {
+            height: 300px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        .line-chart {
+            height: 250px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        .navigation-button {
+            background: linear-gradient(135deg, #003366, #0066cc);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        
+        .navigation-button:hover {
+            background: linear-gradient(135deg, #0066cc, #003366);
+            transform: translateY(-2px);
+        }
+        
+        .insights-panel {
+            background: #f0f8ff;
+            border-left: 4px solid #0066cc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .insights-title {
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+        
+        .recommendation-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .recommendation-title {
+            font-weight: bold;
+            color: #b8860b;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Page Tabs -->
+        <div class="page-tabs">
+            <div class="tab active" onclick="showPage('overview')">📊 Transport Overview</div>
+            <div class="tab" onclick="showPage('analytics')">📈 Detailed Analytics</div>
+        </div>
+        
+        <!-- Overview Page -->
+        <div id="overview" class="page active">
+            <div class="page-content">
+                <!-- Dashboard Header -->
+                <div class="dashboard-header">
+                    <div class="dashboard-title">🚌 Kigali Transport Operators Dashboard</div>
+                    <div class="dashboard-subtitle">Optimizing Public Transport Through Data Analytics</div>
+                </div>
+                
+                <!-- KPI Cards Row -->
+                <div class="kpi-row">
+                    <div class="kpi-card">
+                        <div class="kpi-title">Total Operators</div>
+                        <div class="kpi-value">1,247</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-title">Active Regions</div>
+                        <div class="kpi-value">4</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-title">Peak Coverage</div>
+                        <div class="kpi-value">68%</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-title">Efficiency Score</div>
+                        <div class="kpi-value">7.2</div>
+                    </div>
+                </div>
+                
+                <!-- Charts Grid -->
+                <div class="chart-grid">
+                    <div class="chart-container">
+                        <div class="chart-title">🗺️ Operators by Region (Pie Chart)</div>
+                        <div style="height: 250px; background: #f9f9f9; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; color: #666;">
+                            Regional Distribution Pie Chart
+                            <br>• Gasabo: 35%
+                            <br>• Kicukiro: 28%
+                            <br>• Nyarugenge: 37%
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">🚗 Distribution by Operator Type (Bar Chart)</div>
+                        <div style="height: 250px; background: #f9f9f9; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; color: #666;">
+                            Operator Type Bar Chart
+                            <br>• Taxi: 580
+                            <br>• Bus: 320
+                            <br>• Motorcycle: 347
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">⏰ Peak Operations by Region (Column Chart)</div>
+                        <div style="height: 250px; background: #f9f9f9; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; color: #666;">
+                            Peak Operations Analysis
+                            <br>Stacked columns showing morning/afternoon peak coverage
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">🎯 Performance Gauge</div>
+                        <div class="gauge-container">
+                            <div class="gauge">
+                                <div class="gauge-inner">72%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map Section -->
+                <div class="chart-container">
+                    <div class="chart-title">📍 Geographic Distribution Map</div>
+                    <div class="map-container">
+                        Interactive Map showing operator locations across Kigali
+                        <br>Use coordinates from kigali_transport_operators_map.html
+                        <br>Color-coded by operator type with clustering
+                    </div>
+                </div>
+                
+                <!-- Insights Panel -->
+                <div class="insights-panel">
+                    <div class="insights-title">💡 Key Insights</div>
+                    <p>• Nyarugenge has the highest concentration of operators (37%)</p>
+                    <p>• Peak time coverage needs improvement in Kicukiro region</p>
+                    <p>• Taxi services dominate the transport landscape</p>
+                    <p>• Morning peak operations are more prevalent than afternoon</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Analytics Page -->
+        <div id="analytics" class="page">
+            <div class="page-content">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">📈 Detailed Analytics Dashboard</div>
+                    <div class="dashboard-subtitle">Advanced Insights and Trend Analysis</div>
+                </div>
+                
+                <div class="chart-grid">
+                    <div class="chart-container">
+                        <div class="chart-title">📈 Transport Mode Trends (Line Chart)</div>
+                        <div class="line-chart">
+                            Line Chart showing transport mode popularity trends
+                            <br>X-axis: Time periods | Y-axis: Operator count
+                            <br>Include trend lines for forecasting
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">🔍 Operator Analysis (Scatter Plot)</div>
+                        <div class="scatter-chart">
+                            Scatter Plot: Regional vs Type Distribution
+                            <br>X-axis: Region Operator Count
+                            <br>Y-axis: Type Operator Count
+                            <br>Size: Peak Operations | Color: Operator Type
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">📊 Performance Matrix (Table)</div>
+                        <div style="height: 250px; background: #f9f9f9; border: 1px dashed #ccc; padding: 10px;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <tr style="background: #003366; color: white;">
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Region</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Operators</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Peak Coverage</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Efficiency</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Gasabo</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">437</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">72%</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">8.1</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Kicukiro</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">349</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">64%</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">6.8</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">🎯 Regional Efficiency Comparison</div>
+                        <div style="height: 250px; background: #f9f9f9; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; color: #666;">
+                            Clustered Bar Chart
+                            <br>Comparing efficiency metrics across regions
+                            <br>Include DAX calculated measures
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recommendations Section -->
+                <div class="recommendation-box">
+                    <div class="recommendation-title">🎯 Strategic Recommendations</div>
+                    <p><strong>1. Route Optimization:</strong> Focus expansion in Kicukiro region</p>
+                    <p><strong>2. Peak Management:</strong> Increase afternoon peak coverage</p>
+                    <p><strong>3. Digital Integration:</strong> Implement real-time tracking</p>
+                    <p><strong>4. Performance Monitoring:</strong> Regular efficiency assessments</p>
+                </div>
+                
+                <button class="navigation-button" onclick="showPage('overview')">← Back to Overview</button>
+            </div>
+        </div>
+        
+        <!-- Floating Slicer Panel -->
+        <div class="slicer-panel">
+            <div class="slicer-title">🎛️ Filters</div>
+            
+            <div style="margin-bottom: 20px;">
+                <strong>Region Filter:</strong>
+                <select style="width: 100%; padding: 5px; margin-top: 5px;">
+                    <option>All Regions</option>
+                    <option>Gasabo</option>
+                    <option>Kicukiro</option>
+                    <option>Nyarugenge</option>
+                </select>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <strong>Operator Type:</strong>
+                <div style="margin-top: 5px;">
+                    <label><input type="checkbox" checked> Taxi</label><br>
+                    <label><input type="checkbox" checked> Bus</label><br>
+                    <label><input type="checkbox" checked> Motorcycle</label><br>
+                    <label><input type="checkbox" checked> Hire Car</label>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <strong>Peak Operations:</strong>
+                <div style="margin-top: 5px;">
+                    <label><input type="radio" name="peak" checked> All</label><br>
+                    <label><input type="radio" name="peak"> Morning Only</label><br>
+                    <label><input type="radio" name="peak"> Afternoon Only</label><br>
+                    <label><input type="radio" name="peak"> Both Peaks</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Activate corresponding tab
+            event.target.classList.add('active');
+        }
+        
+        // Add some interactive behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulate data updates
+            const kpiValues = document.querySelectorAll('.kpi-value');
+            
+            // Add hover effects to charts
+            const chartContainers = document.querySelectorAll('.chart-container');
+            chartContainers.forEach(container => {
+                container.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                container.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Simulate gauge animation
+            const gauge = document.querySelector('.gauge');
+            if (gauge) {
+                gauge.style.animation = 'rotateGauge 2s ease-in-out';
+            }
+        });
+        
+        // Add CSS animation for gauge
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rotateGauge {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(216deg); }
+            }
+            
+            .chart-container:hover {
+                box-shadow: 0 4px 15px rgba(0,51,102,0.15);
+            }
+            
+            .kpi-card:hover .kpi-value {
+                color: #0066cc;
+                transition: color 0.3s ease;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

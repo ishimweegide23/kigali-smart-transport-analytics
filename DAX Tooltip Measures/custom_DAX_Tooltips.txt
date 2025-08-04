@@ -1,0 +1,65 @@
+📌 DAX Tooltip Measures — Kigali Smart Transport Analytics
+===========================================================
+
+1. Total Operators (Tooltip)
+----------------------------
+Total_Operators_Tooltip =
+CALCULATE(
+    DISTINCTCOUNT(merged_transport_data_rwanda_full[Operator_Name])
+)
+
+2. Most Common Mode (Tooltip)
+-----------------------------
+Most_Common_Mode_Tooltip =
+VAR ModeSummary =
+    SUMMARIZE(
+        merged_transport_data_rwanda_full,
+        merged_transport_data_rwanda_full[Transport_Mode],
+        "Count", COUNTROWS(merged_transport_data_rwanda_full)
+    )
+RETURN
+    TOPN(1, ModeSummary, [Count], DESC)
+
+Most_Common_Mode_Label =
+CALCULATE(
+    VALUES(merged_transport_data_rwanda_full[Transport_Mode]),
+    TOPN(
+        1,
+        ADDCOLUMNS(
+            VALUES(merged_transport_data_rwanda_full[Transport_Mode]),
+            "Count", CALCULATE(COUNTROWS(merged_transport_data_rwanda_full))
+        ),
+        [Count], DESC
+    )
+)
+
+3. Region with Most Operators (Tooltip)
+---------------------------------------
+Top_Region_Tooltip =
+CALCULATE(
+    VALUES(merged_transport_data_rwanda_full[Region]),
+    TOPN(
+        1,
+        ADDCOLUMNS(
+            VALUES(merged_transport_data_rwanda_full[Region]),
+            "OperatorCount", CALCULATE(DISTINCTCOUNT(merged_transport_data_rwanda_full[Operator_Name]))
+        ),
+        [OperatorCount], DESC
+    )
+)
+
+4. Peak Morning % (Tooltip)
+---------------------------
+Peak_Morning_Percentage_Tooltip =
+VAR Total = COUNTROWS(merged_transport_data_rwanda_full)
+VAR Morning = CALCULATE(
+    COUNTROWS(merged_transport_data_rwanda_full),
+    merged_transport_data_rwanda_full[Peak_Hours] = "Morning"
+)
+RETURN
+    DIVIDE(Morning, Total, 0)
+
+5. Last Update Date (Tooltip)
+-----------------------------
+Last_Update_Tooltip =
+MAX(merged_transport_data_rwanda_full[Date])

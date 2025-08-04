@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_97d7761788e721b2257cff3e735e6a08 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                bottom: 50px; left: 50px; width: 150px; height: 120px; 
+                background-color: white; border:2px solid grey; z-index:9999; 
+                font-size:14px; padding: 10px">
+    <p><b>🚌 Operator Types</b></p>
+    <p><i class="fa fa-circle" style="color:red"></i> Taxi</p>
+    <p><i class="fa fa-circle" style="color:blue"></i> Hire Car</p>
+    <p><i class="fa fa-circle" style="color:green"></i> Bus</p>
+    <p><i class="fa fa-circle" style="color:orange"></i> Motorcycle</p>
+    </div>
+    
+    
+            <div class="folium-map" id="map_97d7761788e721b2257cff3e735e6a08" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_97d7761788e721b2257cff3e735e6a08 = L.map(
+                "map_97d7761788e721b2257cff3e735e6a08",
+                {
+                    center: [-1.9441, 30.0619],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0d53c03d0533deff952252be55835eea = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0d53c03d0533deff952252be55835eea.addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+            var circle_marker_6ef4efa4f751e9d707455c32fd300e66 = L.circleMarker(
+                [-1.903205, 30.061636],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_1b38ee01089575fb38656549f7bf0e6f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2dae4646312e4cdb1c05dcac3359eee5 = $(`<div id="html_2dae4646312e4cdb1c05dcac3359eee5" style="width: 100.0%; height: 100.0%;">             <b>Kimironko Transport Co.</b><br>             Type: Hire car<br>             Region: Gasabo<br>             Phone: 250763131852<br>             Operating Area: Ndera             </div>`)[0];
+                popup_1b38ee01089575fb38656549f7bf0e6f.setContent(html_2dae4646312e4cdb1c05dcac3359eee5);
+            
+        
+
+        circle_marker_6ef4efa4f751e9d707455c32fd300e66.bindPopup(popup_1b38ee01089575fb38656549f7bf0e6f)
+        ;
+
+        
+    
+    
+            var circle_marker_e3244aea0489e7039fc25b6828453f85 = L.circleMarker(
+                [-1.922413, 30.079874],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_6f42bc3ce405d2b6959f7493c28bcf2f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5ac99d53e82670415ec03c77db117d4d = $(`<div id="html_5ac99d53e82670415ec03c77db117d4d" style="width: 100.0%; height: 100.0%;">             <b>Green Moto Kigali</b><br>             Type: Hire car<br>             Region: Gasabo<br>             Phone: 250741583857<br>             Operating Area: Jabana             </div>`)[0];
+                popup_6f42bc3ce405d2b6959f7493c28bcf2f.setContent(html_5ac99d53e82670415ec03c77db117d4d);
+            
+        
+
+        circle_marker_e3244aea0489e7039fc25b6828453f85.bindPopup(popup_6f42bc3ce405d2b6959f7493c28bcf2f)
+        ;
+
+        
+    
+    
+            var circle_marker_181bcb7936316f15bc8d4cc858892620 = L.circleMarker(
+                [-1.924148, 30.04399],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_e1fdf5d14c853d7eee87fe6deee9f92b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e3f1dc553aa52bbffd3c2a95b2cde9f5 = $(`<div id="html_e3f1dc553aa52bbffd3c2a95b2cde9f5" style="width: 100.0%; height: 100.0%;">             <b>Volcano Taxi Ltd.</b><br>             Type: Taxi<br>             Region: Gasabo<br>             Phone: 250742047250<br>             Operating Area: Nduba             </div>`)[0];
+                popup_e1fdf5d14c853d7eee87fe6deee9f92b.setContent(html_e3f1dc553aa52bbffd3c2a95b2cde9f5);
+            
+        
+
+        circle_marker_181bcb7936316f15bc8d4cc858892620.bindPopup(popup_e1fdf5d14c853d7eee87fe6deee9f92b)
+        ;
+
+        
+    
+    
+            var circle_marker_74aae3f3ccf9a824df3ed02fad49f41e = L.circleMarker(
+                [-1.92308, 30.061694],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_3343eb7a1401588458e962a6b7d21ed1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_23c454f87c697f15782ee899222934c5 = $(`<div id="html_23c454f87c697f15782ee899222934c5" style="width: 100.0%; height: 100.0%;">             <b>Remera Quick Rides</b><br>             Type: Hire car<br>             Region: Nyarugenge<br>             Phone: 250704222610<br>             Operating Area: Nyamirambo             </div>`)[0];
+                popup_3343eb7a1401588458e962a6b7d21ed1.setContent(html_23c454f87c697f15782ee899222934c5);
+            
+        
+
+        circle_marker_74aae3f3ccf9a824df3ed02fad49f41e.bindPopup(popup_3343eb7a1401588458e962a6b7d21ed1)
+        ;
+
+        
+    
+    
+            var circle_marker_3d8814feb5ec267262869afbd6bca83f = L.circleMarker(
+                [-1.929227, 30.044618],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_95b81e3099e60fbaba2d1276545d9fb7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_66dd2bfdc604fe627c43136ab0a33bb8 = $(`<div id="html_66dd2bfdc604fe627c43136ab0a33bb8" style="width: 100.0%; height: 100.0%;">             <b>Vision Transport</b><br>             Type: Hire car<br>             Region: Nyarugenge<br>             Phone: 250757366172<br>             Operating Area: Nyarugenge             </div>`)[0];
+                popup_95b81e3099e60fbaba2d1276545d9fb7.setContent(html_66dd2bfdc604fe627c43136ab0a33bb8);
+            
+        
+
+        circle_marker_3d8814feb5ec267262869afbd6bca83f.bindPopup(popup_95b81e3099e60fbaba2d1276545d9fb7)
+        ;
+
+        
+    
+    
+            var circle_marker_113f1b3f0f01a64b61f1de4c2197d9e6 = L.circleMarker(
+                [-1.911157, 30.084076],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_cb3e32e6eb53e4b98e4893be367ae54f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dade09b13e9ce2583949998d1997003b = $(`<div id="html_dade09b13e9ce2583949998d1997003b" style="width: 100.0%; height: 100.0%;">             <b>Rwanda Transport Services</b><br>             Type: Taxi<br>             Region: Gasabo<br>             Phone: 250788503107<br>             Operating Area: Kimihurura             </div>`)[0];
+                popup_cb3e32e6eb53e4b98e4893be367ae54f.setContent(html_dade09b13e9ce2583949998d1997003b);
+            
+        
+
+        circle_marker_113f1b3f0f01a64b61f1de4c2197d9e6.bindPopup(popup_cb3e32e6eb53e4b98e4893be367ae54f)
+        ;
+
+        
+    
+    
+            var circle_marker_79583187ab6483a0eb3603cc5d82ffbf = L.circleMarker(
+                [-1.949892, 30.045185],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_f7345c25d40240cf5bee9288a314b980 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ab43591de1163299017c22c985821d2f = $(`<div id="html_ab43591de1163299017c22c985821d2f" style="width: 100.0%; height: 100.0%;">             <b>Nyabugogo Express</b><br>             Type: Regular bus<br>             Region: Nyarugenge<br>             Phone: 250766369503<br>             Operating Area: Nyakabanda             </div>`)[0];
+                popup_f7345c25d40240cf5bee9288a314b980.setContent(html_ab43591de1163299017c22c985821d2f);
+            
+        
+
+        circle_marker_79583187ab6483a0eb3603cc5d82ffbf.bindPopup(popup_f7345c25d40240cf5bee9288a314b980)
+        ;
+
+        
+    
+    
+            var circle_marker_90219937421921d664513a0e34849854 = L.circleMarker(
+                [-1.922646, 30.085464],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_833d8c28a715f60ceb6412434313d4c2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bf1d4481dae367c1047fab43752d322b = $(`<div id="html_bf1d4481dae367c1047fab43752d322b" style="width: 100.0%; height: 100.0%;">             <b>Kigali City Taxis</b><br>             Type: Hire car<br>             Region: Nyarugenge<br>             Phone: 250741302238<br>             Operating Area: Gitega             </div>`)[0];
+                popup_833d8c28a715f60ceb6412434313d4c2.setContent(html_bf1d4481dae367c1047fab43752d322b);
+            
+        
+
+        circle_marker_90219937421921d664513a0e34849854.bindPopup(popup_833d8c28a715f60ceb6412434313d4c2)
+        ;
+
+        
+    
+    
+            var circle_marker_4b1d77656ff8ff7fed9f665cda09130f = L.circleMarker(
+                [-1.934592, 30.047122],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_ee1febdbf51fb009a77be23f542b6e3e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c150bcdb28a0f38440b1cfc0832786d0 = $(`<div id="html_c150bcdb28a0f38440b1cfc0832786d0" style="width: 100.0%; height: 100.0%;">             <b>Volcano Taxi Ltd.</b><br>             Type: Taxi<br>             Region: Gasabo<br>             Phone: 250716149264<br>             Operating Area: Gatsata             </div>`)[0];
+                popup_ee1febdbf51fb009a77be23f542b6e3e.setContent(html_c150bcdb28a0f38440b1cfc0832786d0);
+            
+        
+
+        circle_marker_4b1d77656ff8ff7fed9f665cda09130f.bindPopup(popup_ee1febdbf51fb009a77be23f542b6e3e)
+        ;
+
+        
+    
+    
+            var circle_marker_79856fdfc1811bd05e2548348f800adf = L.circleMarker(
+                [-1.924835, 30.094695],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_419c4a5972b6f8e94fcb7da0955a11b5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_77eb1da7be2f0dc75dccb73d9a50d169 = $(`<div id="html_77eb1da7be2f0dc75dccb73d9a50d169" style="width: 100.0%; height: 100.0%;">             <b>Kigali City Taxis</b><br>             Type: Taxi<br>             Region: Kicukiro<br>             Phone: 250774911748<br>             Operating Area: Nyarugunga             </div>`)[0];
+                popup_419c4a5972b6f8e94fcb7da0955a11b5.setContent(html_77eb1da7be2f0dc75dccb73d9a50d169);
+            
+        
+
+        circle_marker_79856fdfc1811bd05e2548348f800adf.bindPopup(popup_419c4a5972b6f8e94fcb7da0955a11b5)
+        ;
+
+        
+    
+    
+            var circle_marker_095469760f1ee25e4f344b9fbce0ba4e = L.circleMarker(
+                [-1.944959, 30.115512],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_1b8296f625e76d9a0bde7233720e63c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_993efff42bc994a2f8797b57a01b1095 = $(`<div id="html_993efff42bc994a2f8797b57a01b1095" style="width: 100.0%; height: 100.0%;">             <b>Kigali City Taxis</b><br>             Type: Taxi<br>             Region: Nyarugenge<br>             Phone: 250794591398<br>             Operating Area: Kanyinya             </div>`)[0];
+                popup_1b8296f625e76d9a0bde7233720e63c6.setContent(html_993efff42bc994a2f8797b57a01b1095);
+            
+        
+
+        circle_marker_095469760f1ee25e4f344b9fbce0ba4e.bindPopup(popup_1b8296f625e76d9a0bde7233720e63c6)
+        ;
+
+        
+    
+    
+            var circle_marker_3887f5715e1a71003c2c781805fe8477 = L.circleMarker(
+                [-1.959263, 30.081815],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_1799fccc150206512b95000d82b9c703 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0611ca57046f73c7422ccec9ef6e6996 = $(`<div id="html_0611ca57046f73c7422ccec9ef6e6996" style="width: 100.0%; height: 100.0%;">             <b>Rwanda Transport Services</b><br>             Type: Taxi<br>             Region: Kicukiro<br>             Phone: 250734396076<br>             Operating Area: Kanombe             </div>`)[0];
+                popup_1799fccc150206512b95000d82b9c703.setContent(html_0611ca57046f73c7422ccec9ef6e6996);
+            
+        
+
+        circle_marker_3887f5715e1a71003c2c781805fe8477.bindPopup(popup_1799fccc150206512b95000d82b9c703)
+        ;
+
+        
+    
+    
+            var circle_marker_c1ebb3f818239348b0fd542221151c60 = L.circleMarker(
+                [-1.919908, 30.08106],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_75dadf8401829b6b814f23a4bfdeaf43 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a3654a9dc1d85ed41b6d73a4cfbad2cf = $(`<div id="html_a3654a9dc1d85ed41b6d73a4cfbad2cf" style="width: 100.0%; height: 100.0%;">             <b>Kigali City Taxis</b><br>             Type: Taxi<br>             Region: Kicukiro<br>             Phone: 250725650282<br>             Operating Area: Kicukiro             </div>`)[0];
+                popup_75dadf8401829b6b814f23a4bfdeaf43.setContent(html_a3654a9dc1d85ed41b6d73a4cfbad2cf);
+            
+        
+
+        circle_marker_c1ebb3f818239348b0fd542221151c60.bindPopup(popup_75dadf8401829b6b814f23a4bfdeaf43)
+        ;
+
+        
+    
+    
+            var circle_marker_c4f627fbac554ea7dda5048080eb5cd2 = L.circleMarker(
+                [-1.96283, 30.065178],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_b192aa0dd03fd6bb6e52a6c2edf2944b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4b33a1f6465b3956a6be81cdf362af6c = $(`<div id="html_4b33a1f6465b3956a6be81cdf362af6c" style="width: 100.0%; height: 100.0%;">             <b>Volcano Taxi Ltd.</b><br>             Type: Hire car, Taxi<br>             Region: Gasabo<br>             Phone: 250786059898<br>             Operating Area: Gatsata             </div>`)[0];
+                popup_b192aa0dd03fd6bb6e52a6c2edf2944b.setContent(html_4b33a1f6465b3956a6be81cdf362af6c);
+            
+        
+
+        circle_marker_c4f627fbac554ea7dda5048080eb5cd2.bindPopup(popup_b192aa0dd03fd6bb6e52a6c2edf2944b)
+        ;
+
+        
+    
+    
+            var circle_marker_254cb5dddcb68fdb52800e9f30e827dc = L.circleMarker(
+                [-1.912574, 30.097264],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_19607dfb5452ce7e00a47709c5e6a2bb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a2e0acaa9307ba886e35586f6605315b = $(`<div id="html_a2e0acaa9307ba886e35586f6605315b" style="width: 100.0%; height: 100.0%;">             <b>Remera Quick Rides</b><br>             Type: Taxi<br>             Region: Gasabo<br>             Phone: 250706782908<br>             Operating Area: Ndera             </div>`)[0];
+                popup_19607dfb5452ce7e00a47709c5e6a2bb.setContent(html_a2e0acaa9307ba886e35586f6605315b);
+            
+        
+
+        circle_marker_254cb5dddcb68fdb52800e9f30e827dc.bindPopup(popup_19607dfb5452ce7e00a47709c5e6a2bb)
+        ;
+
+        
+    
+    
+            var circle_marker_6a7b8eda5c26361c57a7c0340e53c313 = L.circleMarker(
+                [-1.916076, 30.10105],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_b76bb4ebcc60070f1363aa2f05110121 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_93cad8cbf22184750113035a37739e85 = $(`<div id="html_93cad8cbf22184750113035a37739e85" style="width: 100.0%; height: 100.0%;">             <b>Kimironko Transport Co.</b><br>             Type: Hire car<br>             Region: Gasabo<br>             Phone: 250777364751<br>             Operating Area: Gisozi             </div>`)[0];
+                popup_b76bb4ebcc60070f1363aa2f05110121.setContent(html_93cad8cbf22184750113035a37739e85);
+            
+        
+
+        circle_marker_6a7b8eda5c26361c57a7c0340e53c313.bindPopup(popup_b76bb4ebcc60070f1363aa2f05110121)
+        ;
+
+        
+    
+    
+            var circle_marker_43f0bb557f7ed7ed126ffb08c1196fd8 = L.circleMarker(
+                [-1.958654, 30.107714],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_d0fab1e86fefd511b5deeac651612f67 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e66864e3500ddae27d1ccc74a1e6b132 = $(`<div id="html_e66864e3500ddae27d1ccc74a1e6b132" style="width: 100.0%; height: 100.0%;">             <b>Kimironko Transport Co.</b><br>             Type: Hire car<br>             Region: Gasabo<br>             Phone: 250784658633<br>             Operating Area: Kimironko             </div>`)[0];
+                popup_d0fab1e86fefd511b5deeac651612f67.setContent(html_e66864e3500ddae27d1ccc74a1e6b132);
+            
+        
+
+        circle_marker_43f0bb557f7ed7ed126ffb08c1196fd8.bindPopup(popup_d0fab1e86fefd511b5deeac651612f67)
+        ;
+
+        
+    
+    
+            var circle_marker_5fddde836193f18154b309338531a1e1 = L.circleMarker(
+                [-1.923627, 30.049075],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_25e58ec0d918eaadc79db05aa05ea604 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_63fb5c3e2618bb0c98b451527ea92ac3 = $(`<div id="html_63fb5c3e2618bb0c98b451527ea92ac3" style="width: 100.0%; height: 100.0%;">             <b>Akagera Bus Lines</b><br>             Type: Taxi<br>             Region: Nyarugenge<br>             Phone: 250789774169<br>             Operating Area: Rwezamenyo             </div>`)[0];
+                popup_25e58ec0d918eaadc79db05aa05ea604.setContent(html_63fb5c3e2618bb0c98b451527ea92ac3);
+            
+        
+
+        circle_marker_5fddde836193f18154b309338531a1e1.bindPopup(popup_25e58ec0d918eaadc79db05aa05ea604)
+        ;
+
+        
+    
+    
+            var circle_marker_cda307e95ebbec8008b684f321f4cfd6 = L.circleMarker(
+                [-1.95649, 30.085601],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_457dee35e8ac072954c957f0dddb43ea = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b12eeaa2f227a40e0641e8bbb54300cb = $(`<div id="html_b12eeaa2f227a40e0641e8bbb54300cb" style="width: 100.0%; height: 100.0%;">             <b>Akagera Bus Lines</b><br>             Type: Taxi<br>             Region: Kicukiro<br>             Phone: 250705624887<br>             Operating Area: Kanombe             </div>`)[0];
+                popup_457dee35e8ac072954c957f0dddb43ea.setContent(html_b12eeaa2f227a40e0641e8bbb54300cb);
+            
+        
+
+        circle_marker_cda307e95ebbec8008b684f321f4cfd6.bindPopup(popup_457dee35e8ac072954c957f0dddb43ea)
+        ;
+
+        
+    
+    
+            var circle_marker_19010f43a6ddbf5c0051eaac7ec3a538 = L.circleMarker(
+                [-1.935826, 30.089733],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_f6eadd05fbfc9f9ef4f1a104255c03fe = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b6d1a94d0527e1d57270670571e37f81 = $(`<div id="html_b6d1a94d0527e1d57270670571e37f81" style="width: 100.0%; height: 100.0%;">             <b>Kigali City Taxis</b><br>             Type: Taxi<br>             Region: Gasabo<br>             Phone: 250749226581<br>             Operating Area: Jabana             </div>`)[0];
+                popup_f6eadd05fbfc9f9ef4f1a104255c03fe.setContent(html_b6d1a94d0527e1d57270670571e37f81);
+            
+        
+
+        circle_marker_19010f43a6ddbf5c0051eaac7ec3a538.bindPopup(popup_f6eadd05fbfc9f9ef4f1a104255c03fe)
+        ;
+
+        
+    
+    
+            var circle_marker_eeeaef187715623f61a9e1c3d043e499 = L.circleMarker(
+                [-1.948682, 30.072385],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_3af3e58930e7cc65692c237e2689592b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ee037a87a1bca45fdabeb62217a23859 = $(`<div id="html_ee037a87a1bca45fdabeb62217a23859" style="width: 100.0%; height: 100.0%;">             <b>Kigali City Taxis</b><br>             Type: Community transport<br>             Region: Nyarugenge<br>             Phone: 250783844020<br>             Operating Area: Mageragere             </div>`)[0];
+                popup_3af3e58930e7cc65692c237e2689592b.setContent(html_ee037a87a1bca45fdabeb62217a23859);
+            
+        
+
+        circle_marker_eeeaef187715623f61a9e1c3d043e499.bindPopup(popup_3af3e58930e7cc65692c237e2689592b)
+        ;
+
+        
+    
+    
+            var circle_marker_a66f28636f0422f0857c474d937621c7 = L.circleMarker(
+                [-1.903221, 30.095352],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_ef19e7530f6e9752b54a8bfd392a1800 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5387d79d7b30bba0885161a627ec66f7 = $(`<div id="html_5387d79d7b30bba0885161a627ec66f7" style="width: 100.0%; height: 100.0%;">             <b>Nyabugogo Express</b><br>             Type: Taxi<br>             Region: Kicukiro<br>             Phone: 250774734623<br>             Operating Area: Kagarama             </div>`)[0];
+                popup_ef19e7530f6e9752b54a8bfd392a1800.setContent(html_5387d79d7b30bba0885161a627ec66f7);
+            
+        
+
+        circle_marker_a66f28636f0422f0857c474d937621c7.bindPopup(popup_ef19e7530f6e9752b54a8bfd392a1800)
+        ;
+
+        
+    
+    
+            var circle_marker_232b588ccb7940986b2e924001373c8f = L.circleMarker(
+                [-1.954787, 30.05],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_3cada2bb5a731c1fd8a8cc2d572b5e5c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6f3a6bb8b478a625d6ce89a895a98965 = $(`<div id="html_6f3a6bb8b478a625d6ce89a895a98965" style="width: 100.0%; height: 100.0%;">             <b>Volcano Taxi Ltd.</b><br>             Type: Hire car<br>             Region: Kicukiro<br>             Phone: 250745650570<br>             Operating Area: Niboye             </div>`)[0];
+                popup_3cada2bb5a731c1fd8a8cc2d572b5e5c.setContent(html_6f3a6bb8b478a625d6ce89a895a98965);
+            
+        
+
+        circle_marker_232b588ccb7940986b2e924001373c8f.bindPopup(popup_3cada2bb5a731c1fd8a8cc2d572b5e5c)
+        ;
+
+        
+    
+    
+            var circle_marker_1ce39e950b05e9488f735d5a9d6b0b38 = L.circleMarker(
+                [-1.914806, 30.063242],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_01237709c677027895566683f9cb0e79 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_03519e1ccc5ddc5d8e06b4ec737feb77 = $(`<div id="html_03519e1ccc5ddc5d8e06b4ec737feb77" style="width: 100.0%; height: 100.0%;">             <b>Kimironko Transport Co.</b><br>             Type: Hire car<br>             Region: Nyarugenge<br>             Phone: 250763131852<br>             Operating Area: Nyamirambo             </div>`)[0];
+                popup_01237709c677027895566683f9cb0e79.setContent(html_03519e1ccc5ddc5d8e06b4ec737feb77);
+            
+        
+
+        circle_marker_1ce39e950b05e9488f735d5a9d6b0b38.bindPopup(popup_01237709c677027895566683f9cb0e79)
+        ;
+
+        
+    
+    
+            var circle_marker_3ba0095d585cdcb15261de4606ac4ee2 = L.circleMarker(
+                [-1.929193, 30.047674],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_e70eee2615d39582f410c1b6c7ffd98a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b2c4a9c290a6f51c2ba402ba7b1c956f = $(`<div id="html_b2c4a9c290a6f51c2ba402ba7b1c956f" style="width: 100.0%; height: 100.0%;">             <b>Green Moto Kigali</b><br>             Type: Hire car<br>             Region: Gasabo<br>             Phone: 250741583857<br>             Operating Area: Remera             </div>`)[0];
+                popup_e70eee2615d39582f410c1b6c7ffd98a.setContent(html_b2c4a9c290a6f51c2ba402ba7b1c956f);
+            
+        
+
+        circle_marker_3ba0095d585cdcb15261de4606ac4ee2.bindPopup(popup_e70eee2615d39582f410c1b6c7ffd98a)
+        ;
+
+        
+    
+    
+            var circle_marker_60600e9ebc5a1538c5ccc52c4e1b333b = L.circleMarker(
+                [-1.943183, 30.114894],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_886023442bcfd0be835f0c250783652d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0645e72637a079864c6e15e8d1be6267 = $(`<div id="html_0645e72637a079864c6e15e8d1be6267" style="width: 100.0%; height: 100.0%;">             <b>Volcano Taxi Ltd.</b><br>             Type: Taxi<br>             Region: Gasabo<br>             Phone: 250742047250<br>             Operating Area: Kimironko             </div>`)[0];
+                popup_886023442bcfd0be835f0c250783652d.setContent(html_0645e72637a079864c6e15e8d1be6267);
+            
+        
+
+        circle_marker_60600e9ebc5a1538c5ccc52c4e1b333b.bindPopup(popup_886023442bcfd0be835f0c250783652d)
+        ;
+
+        
+    
+    
+            var circle_marker_4c4bc6effc775b856fabd6b140daee80 = L.circleMarker(
+                [-1.924918, 30.051108],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_3f6ec65c2c8e6f457793bbe244c89b07 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_60c4f5b6ca098a4b6eca24f9ea1422ef = $(`<div id="html_60c4f5b6ca098a4b6eca24f9ea1422ef" style="width: 100.0%; height: 100.0%;">             <b>Remera Quick Rides</b><br>             Type: Hire car<br>             Region: Gasabo<br>             Phone: 250704222610<br>             Operating Area: Kacyiru             </div>`)[0];
+                popup_3f6ec65c2c8e6f457793bbe244c89b07.setContent(html_60c4f5b6ca098a4b6eca24f9ea1422ef);
+            
+        
+
+        circle_marker_4c4bc6effc775b856fabd6b140daee80.bindPopup(popup_3f6ec65c2c8e6f457793bbe244c89b07)
+        ;
+
+        
+    
+    
+            var circle_marker_fa8b2cdd5657bd39f0c3690f5e62584b = L.circleMarker(
+                [-1.942863, 30.066621],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_78e04f99bfe44bdfcad8a9f0a6e4c921 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e41fd8c6b998b7d77fd3614a04cd3df6 = $(`<div id="html_e41fd8c6b998b7d77fd3614a04cd3df6" style="width: 100.0%; height: 100.0%;">             <b>Vision Transport</b><br>             Type: Hire car<br>             Region: Gasabo<br>             Phone: 250757366172<br>             Operating Area: Gisozi             </div>`)[0];
+                popup_78e04f99bfe44bdfcad8a9f0a6e4c921.setContent(html_e41fd8c6b998b7d77fd3614a04cd3df6);
+            
+        
+
+        circle_marker_fa8b2cdd5657bd39f0c3690f5e62584b.bindPopup(popup_78e04f99bfe44bdfcad8a9f0a6e4c921)
+        ;
+
+        
+    
+    
+            var circle_marker_dfa768ee2b3abfbef0edbe81eae21ca3 = L.circleMarker(
+                [-1.936896, 30.075429],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_8c0b3b7c9c35e9cb46a486dd1e8f3c18 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_91a584fafff2099d3c0ead5db9d3296e = $(`<div id="html_91a584fafff2099d3c0ead5db9d3296e" style="width: 100.0%; height: 100.0%;">             <b>Volcano Taxi Ltd.</b><br>             Type: Taxi<br>             Region: Gasabo<br>             Phone: 250716149264<br>             Operating Area: Kimironko             </div>`)[0];
+                popup_8c0b3b7c9c35e9cb46a486dd1e8f3c18.setContent(html_91a584fafff2099d3c0ead5db9d3296e);
+            
+        
+
+        circle_marker_dfa768ee2b3abfbef0edbe81eae21ca3.bindPopup(popup_8c0b3b7c9c35e9cb46a486dd1e8f3c18)
+        ;
+
+        
+    
+    
+            var circle_marker_c0c59985b8ac82c81695abf37377ff71 = L.circleMarker(
+                [-1.950633, 30.081879],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_97d7761788e721b2257cff3e735e6a08);
+        
+    
+        var popup_1759e0ff26149d79da2e76131829d76d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1f0cda6e8e03a25b00c594e1e41de16b = $(`<div id="html_1f0cda6e8e03a25b00c594e1e41de16b" style="width: 100.0%; height: 100.0%;">             <b>Kimironko Transport Co.</b><br>             Type: Hire car<br>             Region: Gasabo<br>             Phone: 250784658633<br>             Operating Area: Remera             </div>`)[0];
+                popup_1759e0ff26149d79da2e76131829d76d.setContent(html_1f0cda6e8e03a25b00c594e1e41de16b);
+            
+        
+
+        circle_marker_c0c59985b8ac82c81695abf37377ff71.bindPopup(popup_1759e0ff26149d79da2e76131829d76d)
+        ;
+
+        
+    
+</script>
+</html>
